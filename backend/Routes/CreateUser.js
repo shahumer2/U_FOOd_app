@@ -1,4 +1,5 @@
 const { Router } = require("express");
+require('dotenv').config()
 const express = require("express");
 const { Component } = require("react");
 const router = express.Router();
@@ -7,7 +8,7 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const { body, validationResult } = require('express-validator');
 
-let JWT_SECRET = "umerisagoodboyandcalm"
+let JWT_SECRET = process.env.JWT_SECRET
 router.post("/createuser", body('email').isEmail(),
     body('name').isLength({ min: 4 }),
     body('password', "password is too short choose a new one").isLength({ min: 5 }), async (req, res) => {
