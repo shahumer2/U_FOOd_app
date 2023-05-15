@@ -1,0 +1,30 @@
+.car {
+    display: flex;
+    margin-bottom: 15rem;
+    margin-top: -20%;
+}
+
+.sback {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.7)), url("./img2.jpg");
+    height: 124vh;
+    width: 100%;
+
+    margin-top: -10rem;
+    position: absolute;
+}
+
+.Sig {
+    position: absolute;
+    margin-top: -6rem;
+    margin-left: 25rem;
+    font-family: 'Lobster', cursive;
+}
+
+.brand {
+    position: absolute;
+    margin-top: -11rem;
+    margin-left: -14rem;
+    transform: scale(0.4);
+
+}

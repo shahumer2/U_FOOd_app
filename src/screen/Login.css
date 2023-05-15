@@ -1,0 +1,49 @@
+.car {
+    margin-top: 20rem !important;
+    margin-left: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+h1 {
+    color: yellow;
+    z-index: 100;
+    font-size: 4rem;
+}
+
+.back {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.7)), url("./image.jpg");
+    height: 123vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    object-fit: cover;
+
+    margin-top: -150px;
+    position: absolute;
+}
+
+#emailHelp {
+    color: white;
+}
+
+.log {
+    position: absolute;
+    margin-top: -6rem;
+    margin-left: 27rem;
+    font-family: 'Lobster', cursive;
+
+
+
+}
+
+.brand {
+    position: absolute;
+    margin-top: -12rem;
+    margin-left: -14rem;
+    transform: scale(0.4);
+
+}
