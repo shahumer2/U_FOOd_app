@@ -8,6 +8,18 @@
 
 }
 
+.Ahom {
+    margin-left: 3rem;
+    transform: scale(1.1);
+    margin-top: 2rem;
+}
+
+.home {
+    transform: scale(2);
+    margin-left: 2rem;
+    display: inline-flex;
+}
+
 h1 {
     color: yellow;
     z-index: 100;
@@ -24,6 +36,16 @@ h1 {
 
     margin-top: -150px;
     position: absolute;
+
+    @media screen and (max-width: 800px) {
+
+        .left,
+        .main,
+        .right {
+            width: 100%;
+            /* The width is 100%, when the viewport is 800px or smaller */
+        }
+    }
 }
 
 #emailHelp {
@@ -42,8 +64,22 @@ h1 {
 
 .brand {
     position: absolute;
-    margin-top: -12rem;
-    margin-left: -14rem;
+    margin-top: -17rem;
+    margin-left: -20rem;
     transform: scale(0.4);
+    width: 35%;
+    display: inline-flex;
+
+}
+
+.Admin {
+    position: absolute;
+    width: 150px;
+    flex-direction: row;
+    margin-left: 180rem;
+    margin-top: -28rem;
+    margin-bottom: 5rem;
+    transform: scale(2.5);
+    color: yellow;
 
 }

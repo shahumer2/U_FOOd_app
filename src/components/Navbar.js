@@ -35,9 +35,7 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                            <li className="nav-item">
-                                <Link className="nav-link home mx-3" to="/">HOME </Link >
-                            </li>
+
                             {/*to check if logged in to show my ordrs with the help of auth token*/}
                             {(localStorage.getItem("authToken")) ?
 

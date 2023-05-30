@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import "./Login.css"
+import "./AdminLogin.css"
 
 
-
-function Login() {
+function AdminLogin() {
     const navigate = useNavigate()
     const [Credentials, setCredentials] = useState({ email: "", password: "" })
 
     const handleClick = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:4000/api/login", {
+        const response = await fetch("http://localhost:4000/api/Adminlogin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28,10 +27,10 @@ function Login() {
             alert("enter valid credentials")
         }
         if (json.success) {
-            localStorage.setItem("userEmail", Credentials.email)
-            localStorage.setItem("authToken", json.authToken)
+            localStorage.setItem("AdminEmail", Credentials.email)
+            localStorage.setItem("AdminauthToken", json.authToken)
             console.log(localStorage.getItem("authToken"))
-            navigate("/")
+            navigate("/Dashboard")
         }
 
 
@@ -42,21 +41,19 @@ function Login() {
         })
 
     }
+
+
     return (
-        <div className='back' >
+        <div className='backi' >
 
 
 
             <div className=" container justify-content-center align-item-center">
                 <div className='brand'><h1>U-FoodApp</h1>
-                    <div className='Ahom'>
-                        <Link className="nav-link home mx-3 " to="/">HOME </Link >
-                    </div>
 
-
-                    <Link to="/AdminLogin" className="btn btn-success Admin my-2 my-sm-0" >Login As Admin </Link>
+                    <Link to="/" className="btn btn-success Admin my-2 my-sm-0" > Home </Link>
                 </div>
-                <div className='log'><h1>Login</h1>
+                <div className='log head'><h1>    Admin Login</h1>
 
                 </div>
 
@@ -78,17 +75,17 @@ function Login() {
                                 <input type="password" className="form-control" id="exampleInputPassword1" name="password" value={Credentials.password} onChange={onChange} required />
                             </div>
 
-                            <button type="submit" className="btn btn-primary my-4">Login</button>
+                            <button type="submit" className="btn btn-primary my-4" >Login</button>
 
-                            <Link to="/Createuser" className="btn btn-danger mx-3" >SIGNUP </Link>
+
 
                         </form>
                     </div>
                 </div>
             </div >
-        </div >
+        </div>
 
     )
 }
 
-export default Login
+export default AdminLogin

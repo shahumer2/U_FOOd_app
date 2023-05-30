@@ -4,11 +4,12 @@ const Order = require("../model/Order")
 router.post("/OrderData", async (req, res) => {
 
     let data = req.body.order_data
+
     await data.splice(0, 0, { Order_date: req.body.order_date })
 
     //if email is not existing in db then create else insert many()
     let eId = await Order.findOne({ "email": req.body.email })
-    console.log(eId)
+
     if (eId === null) {
         try {
             await Order.create({

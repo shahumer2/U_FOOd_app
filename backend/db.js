@@ -10,6 +10,27 @@ const mongoDb = async () => {
         }
         else {
             console.log("connected")
+            const fetch_user = await mongoose.connection.db.collection("users");
+            fetch_user.find({}).toArray(async function (err, users) {
+                // console.log(users)
+                global.users = users
+                usercount = users.length
+                // console.log(usercount)
+
+
+            })
+
+            const fetch_order = await mongoose.connection.db.collection("orders");
+            fetch_order.find({}).toArray(async function (err, order) {
+                // console.log(order)
+                global.orders = order
+                ordercount = order.length
+                // console.log(usercount)
+
+
+            })
+
+
             const fetch_data = await mongoose.connection.db.collection("foodItems");
             fetch_data.find({}).toArray(async function (err, data) {
                 const foodCategory = await mongoose.connection.db.collection("foodCategory");
@@ -18,8 +39,8 @@ const mongoDb = async () => {
                         console.log(err)
 
                     else
-                        console.log(data)
-                    global.food_items = data;
+                        // console.log(data)
+                        global.food_items = data;
                     global.foodCategory = catData;
 
                 })

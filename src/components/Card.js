@@ -49,7 +49,7 @@ function Card(props) {
 
     return (
         <div className='space'>
-            <div className="card my-2 border-warning" style={{ "width": "20rem" }}>
+            <div className="hcard my-2 border-warning" style={{ "width": "20rem" }}>
                 <img src={props.foodItem.img} className="card-img-top" style={{ height: "150px", objectFit: "fill" }} alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{props.foodItem.name}</h5>

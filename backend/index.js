@@ -13,6 +13,12 @@ app.use(express.json())
 app.use("/api", require("./Routes/CreateUser"))
 app.use("/api", require("./Routes/Displayfood"))
 app.use("/api", require("./Routes/OrderData"))
+app.use("/api", require("./Routes/CreateAdmin"))
+app.use("/api", require("./Routes/GetUser"))
+app.use("/api", require("./Routes/GetOrder"))
+
+
+
 
 
 

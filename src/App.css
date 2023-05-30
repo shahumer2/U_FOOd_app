@@ -37,3 +37,15 @@
     transform: rotate(360deg);
   }
 }
+
+.ant-pagination {
+  color: white !important;
+}
+
+.ant-pagination-item {
+  color: grey;
+}
+
+.ant-pagination-item-link {
+  color: white !important;
+}
