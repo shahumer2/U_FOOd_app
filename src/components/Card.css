@@ -1,7 +1,8 @@
 .card {
     background-color: rgb(34, 34, 34);
-    border-radius: 15px;
+    border-radius: 20px;
     margin-left: -5px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
     cursor: pointer;
     margin-bottom: 5rem;
 
@@ -22,12 +23,12 @@
 } */
 
 .hcard:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
     box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
 
 .border-warning {
-    width: 5px;
+    width: 20px;
 }
 
 img {
@@ -36,4 +37,26 @@ img {
 
 .space {
     margin-bottom: 2rem;
+}
+
+@media (max-width: 700px) {
+    .hcard:hover {
+        transform: scale(1.08) !important;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    }
+
+
+
+    .selp {
+        height: 20px !important;
+        font-size: 10px !important;
+        background-color: white !important;
+    }
+
+    .selps {
+        height: 20px !important;
+        font-size: 10px !important;
+        background-color: white !important;
+    }
+
 }

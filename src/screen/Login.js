@@ -48,9 +48,9 @@ function Login() {
 
 
             <div className=" container justify-content-center align-item-center">
-                <div className='brand'><h1>U-FoodApp</h1>
+                <div className='brand'><h1 className='brandd'>U-FoodApp</h1>
                     <div className='Ahom'>
-                        <Link className="nav-link home mx-3 " to="/">HOME </Link >
+                        <Link className="nav-link home mx-3 " to="/"><button className=' btn btn-success brandds'>HOME</button> </Link >
                     </div>
 
 

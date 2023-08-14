@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Card from '../components/Card'
 import "./Home.css"
 import Navbar from '../components/Navbar'
+// import { setOptions } from 'react-chartjs-2/dist/utils'
 
 function Home() {
     const [search, setsearch] = useState("")
     const [FoodItem, setFoodItem] = useState([])
     const [FoodCat, setFoodCat] = useState([])
+
+
     const loadData = async () => {
         let response = await fetch("http://localhost:4000/api/fooddata", {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -23,6 +26,8 @@ function Home() {
     }
     useEffect(() => {
         loadData()
+
+
 
 
     }, [])
@@ -64,6 +69,8 @@ function Home() {
             <div className="container">
                 {
                     FoodCat !== [] ? FoodCat.map((data) => {
+
+
                         return (
 
                             <div className='row'>
@@ -73,18 +80,95 @@ function Home() {
                                 </div>
                                 <hr />
                                 {
-                                    FoodItem !== [] ? FoodItem.filter((item) => item.CategoryName === data.CategoryName && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
+                                    FoodItem !== [] ? FoodItem.filter((item) =>
+                                        item.CategoryName === data.CategoryName &&
+                                        (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
                                         .map(filterItems => {
+
+
+
+                                            // console.log("filteritemss", filterItems.options);
+                                            filterItems.options.map(items => {
+                                                delete items._id
+
+                                            })
+                                            if (filterItems.CategoryName === "Pizza") {
+                                                return (
+                                                    <>
+
+                                                        <div className='col-md-6 col-lg-4 ' key={filterItems._id}>
+                                                            <Card foodItem={filterItems}
+
+                                                                options={filterItems.options[1]}
+
+                                                            />
+
+                                                        </div>
+                                                    </>
+                                                )
+
+                                            }
+                                            if (filterItems.CategoryName === "Biryani/Rice" || "Satrter") {
+                                                return (
+                                                    <>
+
+                                                        <div className='col-md-6 col-lg-4 ' key={filterItems._id}>
+                                                            <Card foodItem={filterItems}
+
+                                                                options={filterItems.options[0]}
+
+                                                            />
+
+                                                        </div>
+                                                    </>
+                                                )
+
+                                            }
+
+
+                                            // else {
+                                            //     return (
+                                            //         <div className='col-md-6 col-lg-4 ' key={filterItems._id}>
+                                            //             <Card foodItem={filterItems}
+
+
+                                            //                 options={filterItems.options[1]
+
+                                            //                 }
+
+                                            //             />
+
+                                            //         </div>
+                                            //     )
+                                            // }
+
+
+
+
+
+
+
+
+
+
+
                                             return (
                                                 <div className='col-md-6 col-lg-4 ' key={filterItems._id}>
-                                                    <Card foodItem={filterItems}
+                                                    <Card className="homecard" foodItem={filterItems}
+
 
                                                         options={filterItems.options[0]}
+
+
+
                                                     />
+
                                                 </div>
 
 
+
                                             )
+
 
                                         }) : <div>NO SUCH DATA FOUND</div>
                                 }

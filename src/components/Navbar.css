@@ -2,9 +2,97 @@
     color: yellow;
     font-family: 'Lobster', cursive;
     font-size: 2rem;
+    width: 12rem !important;
 }
 
-.home {
-    font-size: 1.2rem;
+.homes {
+    font-size: 1.2rem !important;
     color: green;
+}
+
+.extra {
+    display: hidden;
+}
+
+.myord {
+    margin-left: 3rem !important;
+}
+
+.brok {
+    padding-left: 2rem !important;
+}
+
+h5 {
+    color: white;
+    margin-left: 1rem !important;
+}
+
+.myli {
+    margin-left: -50rem !important;
+}
+
+.badg {
+    display: flex;
+    flex-direction: row;
+    margin-top: -2rem !important;
+}
+
+.menue {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+}
+
+.types {
+    text-decoration: none !important;
+
+}
+
+.bar {
+
+    background-color: green;
+    background-image: linear-gradient(319deg, #3b3939 0%, #2c2b2b 37%, #333131 100%);
+
+
+}
+
+.typ {
+    text-decoration: none !important;
+    font-size: 1.5rem;
+    color: green;
+}
+
+.mycartty {
+    margin-left: -10rem !important;
+    margin-right: 2rem !important;
+    margin-bottom: -18px !important;
+    width: 10rem !important;
+
+}
+
+
+
+@media (max-width: 700px) {
+
+    .container-fluid {
+        width: auto !important;
+    }
+
+    .navbar-brand {
+        color: yellow;
+        font-family: 'Lobster', cursive;
+    }
+
+    .logosty {
+        color: yellow;
+        font-family: 'Lobster', cursive;
+        margin-left: -8rem !important;
+        font-size: 20px !important;
+    }
+
+    .mycartty {
+        margin-left: rem !important;
+
+
+    }
 }

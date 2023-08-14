@@ -1,19 +1,90 @@
-import React, { useState } from 'react'
+
 import "./Navbar.css"
+import React, { useContext, useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import Badge from '@mui/material/Badge';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+import { styled } from '@mui/material/styles';
 import {
 
     Link, useNavigate
 }
 
     from "react-router-dom";
-import Badge from "react-bootstrap/Badge"
+
 import Modal from '../Modal';
 import Cart from '../screen/Cart';
 import { useCart } from './ContextReduver';
 
-
-
+const settings = ['Logout'];
+const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+        backgroundColor: '#44b700',
+        color: '#44b700',
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        '&::after': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            borderRadius: '50%',
+            animation: 'ripple 1.2s infinite ease-in-out',
+            border: '1px solid currentColor',
+            content: '""',
+        },
+    },
+    '@keyframes ripple': {
+        '0%': {
+            transform: 'scale(.8)',
+            opacity: 1,
+        },
+        '100%': {
+            transform: 'scale(2.4)',
+            opacity: 0,
+        },
+    },
+}));
+const StyleBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+        right: -3,
+        top: 13,
+        border: `2px solid ${theme.palette.background.paper}`,
+        padding: '0 4px',
+    },
+}));
 function Navbar() {
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
+
     let data = useCart();
     const [cartView, setcartView] = useState(false)
     const navigate = useNavigate()
@@ -25,51 +96,183 @@ function Navbar() {
 
 
     return (
-        <div>
-            <nav className="navbar navbar-dark bg-dark navbar-expand-lg ">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="/"> U-FOOD  </Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <AppBar className='bar' position="static">
+            <Container maxWidth="xl">
+                <Toolbar disableGutters>
+
+                    <Typography className='logo'
+                        variant="h6"
+                        noWrap
+                        component={Link}
+                        to="/"
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        <h2 className="navbar-brand" >U-Food</h2>
+                    </Typography>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
+                        >
+
+                            <MenuItem className='menues' onClick={handleCloseNavMenu}>
 
 
-                            {/*to check if logged in to show my ordrs with the help of auth token*/}
-                            {(localStorage.getItem("authToken")) ?
-
-                                <li className="nav-item">
-                                    <Link className="nav-link fs-5" to="/myOrder">MY ORDERS </Link >
-                                </li> : ""
-                            };
+                                <Link className='typ' to="/"> <Typography className="homes" textAlign="center">HOME </Typography> </Link>
 
 
+                            </MenuItem>
 
-                        </ul>
-                        {(!localStorage.getItem("authToken")) ?
-                            <div className='d-flex'>
+                        </Menu>
+                    </Box>
 
-                                <Link className="btn btn-white text-success" aria-current="page" to="/Login">LOGIN </Link>
+                    <Typography className='logosty'
+                        variant="h5"
+                        noWrap
+                        component="a"
+                        href=""
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'flex', md: 'none' },
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'yellow',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        U-FOOD
+                    </Typography>
+                    <Box sx={{ fontSize: "20px", flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 
-                                <Link className="btn btn-white text-success" aria-current="page" to="/Createuser">SIGNUP </Link>
+
+                        <Link className='typ' to="/">Home</Link>
+
+                    </Box>
 
 
-                            </div> :
-                            <div>
-                                <div className="btn btn-white text-success" onClick={() => { setcartView(true) }}>MY CART
-                                    <Badge pill bg="danger" className='mx-2'> {data.length} </Badge>
+                    <Box sx={{ flexGrow: 0 }}>
+                        <>
+
+
+                            {(localStorage.getItem("authToken") && localStorage.getItem("userEmail")) ?
+                                <>
+                                    <div className='mycartty'>
+                                        <div className="btn btn-white text-success" onClick={() => { setcartView(true) }}>
+
+                                            <Typography className="homes">    MY CART
+                                                <IconButton color="primary" aria-label="cart">
+                                                    <StyleBadge badgeContent={data.length} color="success">
+                                                        <ShoppingCartIcon />
+                                                    </StyleBadge>
+                                                </IconButton>
+                                            </Typography>
+                                        </div>
+                                        {cartView ? <Modal onClose={() => setcartView(false)} ><Cart /></Modal> : null}
+
+                                    </div>
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Tooltip title="Open settings">
+                                            <div>
+
+
+                                                <div className='badg'>
+                                                    <StyledBadge
+                                                        className="brok"
+                                                        overlap="circular"
+                                                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                                        variant="dot"
+                                                    >
+                                                        <Avatar src="/broken-image.jpg" />
+                                                    </StyledBadge>
+                                                    <h5>{localStorage.getItem("userEmail").split('@')[0]}</h5>
+
+                                                </div>
+
+                                            </div>
+                                        </Tooltip>
+                                    </IconButton>
+                                </>
+                                : <div className='d-flex'>
+
+                                    <Link className="btn btn-white text-success" aria-current="page" to="/Login">LOGIN </Link>
+
+                                    <Link className="btn btn-white text-success" aria-current="page" to="/Createuser">SIGNUP </Link>
+
+
                                 </div>
-                                {cartView ? <Modal onClose={() => setcartView(false)} ><Cart /></Modal> : null}
-                                <div className="btn btn-white text-danger" onClick={handleLogout}>LOGOUT </div>
-                            </div>
-                        }
+                            }
 
-                    </div>
-                </div>
-            </nav>
-        </div>
-    )
+
+
+
+                        </>
+
+                        <Menu className='dropp'
+                            sx={{ mt: '45px' }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {settings.map((setting) => (
+                                <MenuItem className='menue' key={setting} onClick={handleCloseUserMenu}>
+                                    <Button variant="outlined" style={{ marginBottom: "10px " }}>  <Link className="types" to="/myOrder"> MY ORDERS </Link > </Button>
+
+                                    <Button variant="outlined" className='types' onClick={handleLogout}>  <Typography textAlign="center">Logout</Typography></Button>
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                    </Box>
+                </Toolbar>
+            </Container>
+        </AppBar >
+    );
+
 }
 
 export default Navbar

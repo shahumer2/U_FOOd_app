@@ -5,13 +5,13 @@ const FoodSchema = new Schema({
 
     CategoryName: {
         type: String,
-        unique: true,
-        required: true
+
+
 
     },
     name: {
         type: String,
-        unique: true,
+
         required: true
 
     },
@@ -19,25 +19,25 @@ const FoodSchema = new Schema({
 
     img: {
         type: String,
-        unique: true,
-        required: true
+
+
     },
     options: [{
 
         half: {
-            type: Number
+            type: String
         },
         full: {
-            type: Number
+            type: String
         },
         regular: {
-            type: Number
+            type: String
         },
         medium: {
-            type: Number
+            type: String
         },
         large: {
-            type: Number
+            type: String
         },
 
 
@@ -46,13 +46,13 @@ const FoodSchema = new Schema({
     }],
     description: {
         type: String,
-        unique: true,
-        required: true
+
+
     },
     rating: {
-        type: Number,
-        unique: true,
-        required: true
+        type: String,
+
+
     },
 
 

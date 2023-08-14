@@ -29,7 +29,7 @@ function AdminLogin() {
         if (json.success) {
             localStorage.setItem("AdminEmail", Credentials.email)
             localStorage.setItem("AdminauthToken", json.authToken)
-            console.log(localStorage.getItem("authToken"))
+
             navigate("/Dashboard")
         }
 
@@ -49,11 +49,11 @@ function AdminLogin() {
 
 
             <div className=" container justify-content-center align-item-center">
-                <div className='brand'><h1>U-FoodApp</h1>
+                <div className='brand'><h1 className='bran'>U-FoodApp</h1>
 
-                    <Link to="/" className="btn btn-success Admin my-2 my-sm-0" > Home </Link>
+                    <Link to="/" className="btn btn-success Admin my-2 my-sm-0 homess" > Home </Link>
                 </div>
-                <div className='log head'><h1>    Admin Login</h1>
+                <div className='log heading'><h1 className='logg' >    Admin Login</h1>
 
                 </div>
 
@@ -83,7 +83,7 @@ function AdminLogin() {
                     </div>
                 </div>
             </div >
-        </div>
+        </div >
 
     )
 }

@@ -2,6 +2,32 @@
     margin-top: -9rem;
 }
 
-.head {
+
+.heading {
     margin-left: 350px;
+}
+
+.bran {
+    font-size: 4rem !important;
+}
+
+@media (max-width: 700px) {
+
+
+
+    .bran {
+        font-size: 50px !important;
+        margin-left: -14rem !important;
+    }
+
+    .homess {
+        width: 4rem !important;
+        margin-left: 36rem !important;
+    }
+
+    .logg {
+        font-size: 50px !important;
+        margin-left: -3rem !important;
+
+    }
 }
